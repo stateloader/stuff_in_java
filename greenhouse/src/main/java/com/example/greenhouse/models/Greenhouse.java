@@ -6,5 +6,4 @@ public class Greenhouse {
 
   public Greenhouse() {}
 
-  
 }
