@@ -1,11 +1,12 @@
 package com.example.greenhouse.controllers;
 
+import com.example.greenhouse.repositories.GreenhouseDAO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
 
-  @RequestMapping (value="/")
-  public String menu() {return "index";}
 }
