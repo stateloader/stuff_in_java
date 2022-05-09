@@ -12,8 +12,8 @@ import java.util.Properties;
 
 public class SectorDAO {
 
-  static final String SQL_SECTORS = "select * from sector";
-  
+  static final String QUERY_ALL = "select * from sector";
+
   Properties properties = new Properties();
 
   public SectorDAO ()   {
@@ -32,7 +32,7 @@ public class SectorDAO {
             properties.getProperty("spring.datasource.username"),
             properties.getProperty("spring.datasource.password"));
          Statement statement = connection.createStatement();
-         ResultSet resultSet = statement.executeQuery(SQL_SECTORS)) {
+         ResultSet resultSet = statement.executeQuery(QUERY_ALL)) {
 
       while (resultSet.next()) {
         int id = resultSet.getInt("id");
