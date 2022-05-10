@@ -1,6 +1,8 @@
 package com.example.greenhouse.models;
 
-public class Sector {
+import java.io.Serializable;
+
+public class Sector implements Serializable {
 
   private int id;
   private String name;

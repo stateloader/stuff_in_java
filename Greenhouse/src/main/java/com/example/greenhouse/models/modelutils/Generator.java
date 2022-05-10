@@ -1,11 +1,7 @@
-package com.example.greenhouse.models.utils;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+package com.example.greenhouse.models.modelutils;
 
 public class Generator {
-
+/*
   private final int MAX_SAMPLES = 21;
 
   public Generator() {}
@@ -42,8 +38,9 @@ public class Generator {
     for (int i = 0, j = 0; i < MAX_SAMPLES; i++, j++) {
       String stamp = year + month + "0" + dayCount + time[j].toString();
       timestamps.add(stamp);
-      if (j == 2) j = 0;
+      if (j == 2) {dayCount++; j = 0;}
     }
     return timestamps;
   }
+  */
 }

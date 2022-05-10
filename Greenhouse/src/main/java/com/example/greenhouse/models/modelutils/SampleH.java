@@ -1,13 +1,14 @@
-package com.example.greenhouse.models.utils;
+package com.example.greenhouse.models.modelutils;
 
-public class SampleT {
+public class SampleH {
+
   private int id;
   private float sample;
   private String timestamp;
 
-  public SampleT() {}
+  public SampleH() {}
 
-  public SampleT(int id, float sample, String timestamp) {
+  public SampleH(int id, float sample, String timestamp) {
     this.id = id;
     this.sample = sample;
     this.timestamp = timestamp;
