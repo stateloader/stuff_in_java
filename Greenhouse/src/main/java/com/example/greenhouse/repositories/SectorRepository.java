@@ -6,15 +6,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SectorDAO {
+public class SectorRepository {
 
   private static final String QUERY_ALL = "select * from sector";
   private static final String QUERY_ADD = "insert into sector (name) values (?)";
   private static final String QUERY_DEL = "delete from sector where id = ?";
 
-  public SectorDAO () {}
+  public SectorRepository() {}
 
-  public List<Sector> getAllSectors() {
+  public List<Sector> getSectorTable() {
 
     Connect connect = new Connect();
     List<Sector>sectors = new ArrayList<>();
@@ -37,49 +37,12 @@ public class SectorDAO {
   }
   public Sector getSector(int id) {
 
-    List<Sector> sectors = getAllSectors();
+    List<Sector> sectors = getSectorTable();
 
     for (int i = 0; i < sectors.size(); i++) {
       if (sectors.get(i).getId() == id)
         return sectors.get(i);
     }
     return null;
-  }
-
-  public boolean setSector(Sector sector) {
-
-    int rowChanged = 0;
-    Connect connect = new Connect();
-
-    try {
-      Connection connection = connect.loadConnection();
-      PreparedStatement statement = connection.prepareStatement(QUERY_ADD);
-      statement.setString(1, sector.getName());
-      rowChanged = statement.executeUpdate();
-
-      if (rowChanged == 1) return true;
-
-    } catch (SQLException sqlException) {
-      sqlException.printStackTrace();
-    }
-    return false;
-  }
-
-  public boolean delSector(int id) {
-    int rowChanged = 0;
-    Connect connect = new Connect();
-
-    try {
-      Connection connection = connect.loadConnection();
-      PreparedStatement statement = connection.prepareStatement(QUERY_DEL);
-      statement.setInt(1, id);
-      rowChanged = statement.executeUpdate();
-
-      if (rowChanged == 1) return true;
-
-    } catch (SQLException sqlException) {
-      sqlException.printStackTrace();
-    }
-    return false;
   }
 }

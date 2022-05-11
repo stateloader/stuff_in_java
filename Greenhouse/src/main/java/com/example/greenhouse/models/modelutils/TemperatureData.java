@@ -1,24 +1,25 @@
 package com.example.greenhouse.models.modelutils;
 
-public class SampleH {
+public class TemperatureData {
 
   private int id;
-  private float sample;
+  private float data;
   private String timestamp;
 
-  public SampleH() {}
+  public TemperatureData() {}
 
-  public SampleH(int id, float sample, String timestamp) {
+  public TemperatureData(int id, float data, String timestamp) {
     this.id = id;
-    this.sample = sample;
+    this.data = data;
     this.timestamp = timestamp;
   }
 
   public int getId() {return id;}
-  public float getSample() {return sample;}
+  public float getData() {return data;}
   public String getTimestamp() {return timestamp;}
 
   public void setId(int id) {this.id = id;}
-  public void setSample(float sample) {this.sample = sample;}
+  public void setData(float data) {this.data = data;}
   public void setTimestamp(String timestamp) {this.timestamp = timestamp;}
+
 }

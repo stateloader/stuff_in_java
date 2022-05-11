@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Greenhouse Sectors</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<div th:switch="${sector}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2 th:text="${sector.name.toUpperCase()}"></h2>
+        <table>
+            <thead>
+            <tr>
+                <th>mextri</th>
+                <th>texteee</th>
+                <th>text</th>
+            </tr>
+            </thead>
+            <tbody>
+                <td th:text="${sector.id}"></td>
+                <td th:text="${sector.name}"></td>
+                <td><a th:href="@{/sector/{id}(id=${sector.id})}">Manage</a></td>
+                <td><a th:href="@{/}">Home</a></td>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
