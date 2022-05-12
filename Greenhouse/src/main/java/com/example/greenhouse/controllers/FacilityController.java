@@ -14,7 +14,6 @@ public class FacilityController {
   private static SectorRepository sectorRepository = new SectorRepository();
 
   @GetMapping("/")
-  // reads and publish rows from sql-table "sector".
 
   public String showFacility(Model model) {
     List<Sector> sectors = sectorRepository.getSectorTable();
