@@ -2,15 +2,15 @@ package com.example.greenhouse.repositories.repoutils;
 
 import java.io.Serializable;
 
-public class SysCall implements Serializable {
+public class Result implements Serializable {
 
   private static final long serialVersionUID = 1L;
   private String message;
   private Boolean status;
 
-  public SysCall(){}
+  public Result(){}
 
-  public SysCall(String message, Boolean status){
+  public Result(String message, Boolean status){
     this.message = message;
     this.status = status;
   }

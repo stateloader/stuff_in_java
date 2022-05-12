@@ -14,13 +14,14 @@
       <thead>
       <tr>
         <th>ID</th>
-        <th>Timestamp</th>
-        <th>Price SEK kw/h</th>
+        <th>Price SEK KW/H</th>
+        <th>Date and Time</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="entry : ${energyTable}">
         <td th:text="${entry.id}"></td>
+        <td th:text="${entry.price}"></td>
         <td th:text="${entry.timestamp}"></td>
       </tr>
       </tbody>

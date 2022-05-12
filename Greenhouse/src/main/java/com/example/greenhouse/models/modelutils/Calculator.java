@@ -1,8 +1,9 @@
 package com.example.greenhouse.models.modelutils;
 
+import java.util.List;
+
 public class Calculator {
 
-  /*
   public Calculator() {}
 
   public float calculateAverage(List<Float> readings) {
@@ -15,5 +16,4 @@ public class Calculator {
     return avg = (sum / readings.size());
 
   }
-  */
 }

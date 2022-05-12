@@ -14,9 +14,11 @@ import java.util.List;
 public class FacilityController {
 
   private static SectorRepository sectorRepository = new SectorRepository();
-  private static EnergyRepository energyRepository = new EnergyRepository();
+  //private static EnergyRepository energyRepository = new EnergyRepository();
 
   @GetMapping("/")
+  // reads and publish rows from sql-table "sector".
+
   public String showFacility(Model model) {
     List<Sector> sectors = sectorRepository.getSectorTable();
     model.addAttribute("sectors", sectors);
@@ -25,16 +27,10 @@ public class FacilityController {
   }
 
   @GetMapping("/sector/{id}")
+
   public String showSector(@PathVariable("id") int id, Model model) {
     Sector sector = sectorRepository.getSector(id);
     model.addAttribute("sector", sector);
     return "sector";
-  }
-
-  @GetMapping("/energy")
-  public String showEnergyTable(Model model) {
-    List<EnergyData> energyTable = energyRepository.getEnergyTable();
-    model.addAttribute("energyTable", energyTable);
-    return "energy";
   }
 }
