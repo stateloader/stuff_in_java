@@ -14,14 +14,16 @@ public class EnergyController {
 
   @GetMapping("/energy")
   public String showEnergyTable(Model model) {
+    // "modellerar" in attribut till energy.html för "viewing". Se EnergyRepository.
+
+    // "energyTable", all data från tabellen "energy_data".
+    // "energyData", instans av EnergyData, fylls i och läggs in i tabellen "energy_data".
+    // "energyAverage, medelvärdet av samtliga energipriser.
+
     model.addAttribute("energyTable", energyRepository.getEnergyTable());
+    model.addAttribute("energyData", energyRepository.getDataInstance());
+    model.addAttribute("energyAverage", energyRepository.getAveragePrice());
     return "energy";
-  }
-  @GetMapping("/energy/add")
-  public String addEnergyData(Model model){
-    EnergyData energyData = new EnergyData();
-    model.addAttribute("energyData", energyData);
-    return "energy_form";
   }
   @PostMapping("/energy/update")
   public String updateEnergyTable(@ModelAttribute EnergyData energyData) {

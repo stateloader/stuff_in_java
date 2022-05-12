@@ -1,7 +1,5 @@
 package com.example.greenhouse.controllers;
 import com.example.greenhouse.models.Sector;
-import com.example.greenhouse.models.modelutils.EnergyData;
-import com.example.greenhouse.repositories.EnergyRepository;
 import com.example.greenhouse.repositories.SectorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,6 @@ import java.util.List;
 public class FacilityController {
 
   private static SectorRepository sectorRepository = new SectorRepository();
-  //private static EnergyRepository energyRepository = new EnergyRepository();
 
   @GetMapping("/")
   // reads and publish rows from sql-table "sector".
@@ -25,7 +22,6 @@ public class FacilityController {
     return "home";
 
   }
-
   @GetMapping("/sector/{id}")
 
   public String showSector(@PathVariable("id") int id, Model model) {

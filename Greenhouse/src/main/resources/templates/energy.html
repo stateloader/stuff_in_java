@@ -9,27 +9,23 @@
 <div th:switch="${energyTable}">
   <h2 th:case="null">Something went terrible!</h2>
   <div th:case="*">
-    <h2>GREENHOUSE</h2>
+    <h2>ENERGY SECTOR</h2>
     <table>
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Price SEK KW/H</th>
-        <th>Date and Time</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="entry : ${energyTable}">
-        <td th:text="${entry.id}"></td>
+      <thead><tr><th>Price SEK KW/H</th><th>Date and Time</tr></thead>
+      <tbody><tr th:each="entry : ${energyTable}">
         <td th:text="${entry.price}"></td>
-        <td th:text="${entry.timestamp}"></td>
-      </tr>
+        <td th:text="${entry.timestamp}"></td></tr>
       </tbody>
     </table>
   </div>
-  <p><a href="/energy/avg">Seven Day Average</a></p>
-  <p><a href="/energy/add">Enter Latest Price</a></p>
-
+  <div>
+  <form th:action="@{/energy/update}" th:object="${energyData}" method="POST">
+    <input type="text" th:field="*{price}"/>
+    <button type="submit" class="btn btn-primary col-2">Post New Price</button>
+  </form>
+    <td th:text="${energyAverage}"></td>
+  </div>
+  <p><a href="/">Back To Sectors</a></p>
 </div>
 </body>
 </html>

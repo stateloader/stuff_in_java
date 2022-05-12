@@ -3,21 +3,21 @@ package com.example.greenhouse.models;
 public class Sensor {
 
   private int id;
-  private String sensorType;
+  private String type;
 
   // constructors
   public Sensor() {}
 
-  public Sensor(int id, String sensorType) {
+  public Sensor(int id, String type) {
     this.id = id;
-    this.sensorType = sensorType;
+    this.type = type;
   }
 
   // getters
-  public String getSensorType() {return sensorType;}
+  public String getType() {return type;}
   public int getId() {return id;}
 
   // setters
   public void setId(int id) {this.id = id;}
-  public void setSensorType(String sensorType) {this.sensorType = sensorType;}
+  public void setType(String type) {this.type = type;}
 }

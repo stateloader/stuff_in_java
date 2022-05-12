@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Greenhouse Sectors</title>
-    <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Greenhouse Sectors</title>
+  <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
 </head>
 <body>
 <div th:switch="${sectors}">
-    <h2 th:case="null">No users yet!</h2>
-    <div th:case="*">
-        <h2>GREENHOUSE</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Sector ID</th>
-                <th>Sector Name</th>
-                <th>Sector Manager</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="sector : ${sectors}">
-                <td th:text="${sector.id}"></td>
-                <td th:text="${sector.name}"></td>
-                <td><a th:href="@{/sector/{id}(id=${sector.id})}">Manage</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+  <h2 th:case="null">No users yet!</h2>
+  <div th:case="*">
+    <h2>GREENHOUSE</h2>
+      <table>
+        <thead><tr><th>Sector ID</th><th>Sector Name</th><th>Sector Manager</th></tr></thead>
+          <tbody>
+          <tr th:each="sector : ${sectors}">
+            <td th:text="${sector.id}"></td>
+            <td th:text="${sector.name}"></td>
+            <td><a th:href="@{/sector/{id}(id=${sector.id})}">Manage</a></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
     <p><a href="/energy">Energy</a></p>
-</div>
+  </div>
 </body>
 </html>

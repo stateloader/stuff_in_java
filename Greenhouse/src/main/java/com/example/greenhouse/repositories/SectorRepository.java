@@ -1,16 +1,13 @@
 package com.example.greenhouse.repositories;
 import com.example.greenhouse.models.Sector;
 import com.example.greenhouse.repositories.repoutils.Connect;
+import com.example.greenhouse.repositories.repoutils.Queries;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SectorRepository {
-
-  private static final String QUERY_ALL = "select * from sector";
-  private static final String QUERY_ADD = "insert into sector (name) values (?)";
-  private static final String QUERY_DEL = "delete from sector where id = ?";
 
   public SectorRepository() {}
 
@@ -22,7 +19,7 @@ public class SectorRepository {
     try {
       Connection connection = connect.loadConnection();
       Statement statement = connection.createStatement();
-      ResultSet resultset = statement.executeQuery(QUERY_ALL);
+      ResultSet resultset = statement.executeQuery(Queries.ALL_SECTORS);
 
       while (resultset.next()) {
         int id = resultset.getInt("id");
