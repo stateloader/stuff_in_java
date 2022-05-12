@@ -8,15 +8,15 @@ public class Queries {
           "SELECT * FROM energy_data";
   public static final String ADD_ENERGY_DATA =
           "INSERT INTO energy_data (price, timestamp) VALUES (?, NOW())";
-  private static final String ALL_SENSOR =
+  public static final String ALL_SENSOR =
           "SELECT * FROM sensor_data";
-  private static final String ALL_TEMP =
+  public static final String ALL_TEMP =
           "SELECT * FROM sensor_data WHERE sensor_id = 1";
-  private static final String ALL_HUMID =
+  public static final String ALL_HUMID =
           "SELECT * FROM sensor_data WHERE sensor_id = 2";
-  private static final String ALL_TEMP_BY_SECTOR =
+  public static final String ALL_TEMP_BY_SECTOR =
           "SELECT * FROM sensor_data WHERE sensor_id = 1 AND sector_id = ?";
-  private static final String ALL_HUMID_BY_SECTOR =
+  public static final String ALL_HUMID_BY_SECTOR =
           "SELECT * FROM sensor_data WHERE sensor_id = 2 AND sector_id = ?";
 
 }
