@@ -1,6 +1,8 @@
 package com.example.greenhouse.models;
 
-public class Sensor {
+import java.io.Serializable;
+
+public class Sensor implements Serializable {
 
   private int id;
   private String type;

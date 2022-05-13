@@ -20,8 +20,8 @@ public class EnergyController {
     // "energyData", instans av EnergyData, fylls i och läggs in i tabellen "energy_data".
     // "energyAverage, medelvärdet av samtliga energipriser.
 
-    model.addAttribute("energyTable", energyRepository.getEnergyTable());
-    model.addAttribute("energyData", energyRepository.getDataInstance());
+    model.addAttribute("energyTable", energyRepository.getAllEnergyData());
+    model.addAttribute("energyData", energyRepository.getEnergyData());
     model.addAttribute("energyAverage", energyRepository.getAveragePrice());
     return "energy";
   }

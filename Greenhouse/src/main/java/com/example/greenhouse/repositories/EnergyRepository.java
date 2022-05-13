@@ -13,7 +13,7 @@ public class EnergyRepository {
 
   public EnergyRepository() {}
 
-  public List<EnergyData> getEnergyTable() {
+  public List<EnergyData> getAllEnergyData() {
 
     Connect connect = new Connect();
     List<EnergyData> energyTable = new ArrayList<>();
@@ -56,7 +56,7 @@ public class EnergyRepository {
     return false;
   }
 
-  public EnergyData getDataInstance() {
+  public EnergyData getEnergyData() {
     return new EnergyData();
   }
 
@@ -64,7 +64,7 @@ public class EnergyRepository {
 
     Calculator calculator = new Calculator();
     List<Float> prices = new ArrayList<>();
-    List<EnergyData> energyTable = getEnergyTable();
+    List<EnergyData> energyTable = getAllEnergyData();
 
     for (EnergyData data : energyTable)
       prices.add(data.getPrice());

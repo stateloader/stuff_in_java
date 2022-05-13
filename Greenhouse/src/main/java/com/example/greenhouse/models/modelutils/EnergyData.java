@@ -1,8 +1,9 @@
 package com.example.greenhouse.models.modelutils;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class EnergyData {
+public class EnergyData implements Serializable {
 
   private int id;
   private float price;

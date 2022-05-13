@@ -1,14 +1,16 @@
 package com.example.greenhouse.models.modelutils;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class SensorData {
+public class SensorData implements Serializable {
 
   private int id;
   private float data;
   private Timestamp timestamp;
   private int sectorID;
   private int sensorID;
+
   public SensorData() {}
 
   public SensorData(int id, float data, Timestamp timestamp, int sectorID, int sensorID) {

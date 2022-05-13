@@ -16,7 +16,8 @@
           <tr th:each="sector : ${sectors}">
             <td th:text="${sector.id}"></td>
             <td th:text="${sector.name}"></td>
-            <td><a th:href="@{/sector/{id}(id=${sector.id})}">Manage</a></td>
+            <td><a th:href="@{/sector/{id}(id=${sector.id})}">Show Sector's Temperature readings</a></td>
+            <td><a th:href="@{/sector/{id}(id=${sector.id})}">Show Sector's Humidity readings</a></td>
           </tr>
         </tbody>
       </table>

@@ -11,7 +11,7 @@ public class SectorRepository {
 
   public SectorRepository() {}
 
-  public List<Sector> getSectorTable() {
+  public List<Sector> getAllSectorData() {
 
     Connect connect = new Connect();
     List<Sector>sectors = new ArrayList<>();
@@ -32,12 +32,12 @@ public class SectorRepository {
       return null;
     }
   }
-  public Sector getSector(int id) {
+  public Sector getSector(int sectorID) {
 
-    List<Sector> sectors = getSectorTable();
+    List<Sector> sectors = getAllSectorData();
 
     for (int i = 0; i < sectors.size(); i++) {
-      if (sectors.get(i).getId() == id)
+      if (sectors.get(i).getId() == sectorID)
         return sectors.get(i);
     }
     return null;
