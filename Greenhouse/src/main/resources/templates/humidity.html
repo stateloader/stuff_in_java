@@ -6,6 +6,7 @@
     <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
 </head>
 <body>
+
 <div th:switch="${sensors}">
     <h2 th:case="null">No data!</h2>
     <div th:case="*">

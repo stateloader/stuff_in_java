@@ -11,47 +11,57 @@ import java.util.List;
 
 public class SensorRepository {
 
-  private int tableLength;
+  private int sizeTemperatureData;
+  private int sizeHumidityData;
 
   public SensorRepository() {}
 
-  public int getTableLength() {return tableLength;}
-  public void setTableLength(int tableLength) {this.tableLength = tableLength;}
+  // Getters, size of various lists storing various data. Used when fetching latest "reading" [see SensorController].
+  public int getSizeTemperatureData() {return sizeTemperatureData;}
+  public int getSizeHumidityData() {return sizeHumidityData;}
+
+  // Setters, sets size of various lists storing various data.
+  public void setSizeTemperatureData(int sizeTemperatureData) {this.sizeTemperatureData = sizeTemperatureData;}
+  public void setSizeHumidityData(int sizeHumidityData) {this.sizeHumidityData = sizeHumidityData;}
 
   public List<SensorData> getTemperatureReadingBySector(int sectorID) {
 
-    // queries all temperature-data from a given sector.
+    // Queries and returns all temperature-data from a given sector [see class Query].
 
     Connect connect = new Connect();
     Queries queries = new Queries();
-    List<SensorData> sensorData;
+    List<SensorData> temperatureTable;
 
     Connection connection = connect.loadConnection();
-    sensorData = queries.getSectorTemperature(connection, sectorID);
-    setTableLength(sensorData.size());
+    temperatureTable = queries.getTemperatureBySector(connection, sectorID);
+    setSizeTemperatureData(temperatureTable.size());
 
-    return sensorData;
+    return temperatureTable;
   }
 
   public List<SensorData> getHumidityReadingBySector(int sectorID) {
 
-    // queries all humidity-data from a given sector.
+    // Queries and returns all humidity-data from a given sector [see class Query].
 
     Connect connect = new Connect();
     Queries queries = new Queries();
-    List<SensorData> sensorData;
+    List<SensorData> humidityTable;
 
     Connection connection = connect.loadConnection();
-    sensorData = queries.getSectorByHumidity(connection, sectorID);
-    return sensorData;
+    humidityTable = queries.getHumidityBySector(connection, sectorID);
+    setSizeHumidityData(humidityTable.size());
+
+    return humidityTable;
   }
 
   public float getAverageTemperature(int sectorID) {
 
+    // Queries given sector's temperature-data, calculates average and returns it [see class Query, Calculator].
+
     Calculator calculator = new Calculator();
     List<Float> temperatureValues = new ArrayList<>();
 
-    List<SensorData> temperatureTable= getTemperatureReadingBySector(sectorID);
+    List<SensorData> temperatureTable = getTemperatureReadingBySector(sectorID);
 
     for (SensorData sensorData : temperatureTable)
       temperatureValues.add(sensorData.getData());
@@ -60,6 +70,8 @@ public class SensorRepository {
   }
 
   public float getAverageHumidity(int sectorID) {
+
+    // Queries given sector's humidity-data, calculates average and returns it [see class Query, Calculator].
 
     Calculator calculator = new Calculator();
     List<Float> humidityValues = new ArrayList<>();
@@ -74,7 +86,7 @@ public class SensorRepository {
 
   public String getSectorName(int sectorID) {
 
-    // ugly solution for now.
+    // Ugly solution for now.
 
     switch(sectorID) {
       case 1: return "SECTOR A";

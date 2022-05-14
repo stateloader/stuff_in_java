@@ -1,13 +1,19 @@
 @charset "ISO-8859-1";
+
 body{
     background: #f5f5f5;
     font-family: "Courier New", monospace;
 }
-app_header{
+.page_header{
+    text-align: left;
+    font-size: xx-large;
     font-weight: bold;
 }
-app_data{
-    font-weight: bold;
-    font-size: 20px;
-    align-self: center;
+
+.sub_header{
+    text-align: center;
+    font-size: large;
+}
+.meta_block{
+    alignment: right;
 }

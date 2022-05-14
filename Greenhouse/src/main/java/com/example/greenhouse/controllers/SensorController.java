@@ -16,7 +16,7 @@ public class SensorController {
 
     model.addAttribute("sector", sensorRepository.getSectorName(sectorID));
     model.addAttribute("sensors", sensorRepository.getTemperatureReadingBySector(sectorID));
-    model.addAttribute("lastTemperatureIndex", sensorRepository.getTableLength());
+    model.addAttribute("lastTemperatureIndex", sensorRepository.getSizeTemperatureData());
     model.addAttribute("temperatureAverage", sensorRepository.getAverageTemperature(sectorID));
 
     return "temperature";
@@ -27,13 +27,13 @@ public class SensorController {
 
     model.addAttribute("sector", sensorRepository.getSectorName(sectorID));
     model.addAttribute("sensors", sensorRepository.getHumidityReadingBySector(sectorID));
-    model.addAttribute("lastHumidityIndex", sensorRepository.getTableLength());
+    model.addAttribute("lastHumidityIndex", sensorRepository.getSizeHumidityData());
     model.addAttribute("humidityAverage", sensorRepository.getAverageHumidity(sectorID));
     return "humidity";
   }
 
-  @GetMapping("/test")
+  @GetMapping("/dashboard")
   public String showDashboard(@PathVariable("id") int sectorID, Model model) {
-    return "test";
+    return "dashboard";
   }
 }

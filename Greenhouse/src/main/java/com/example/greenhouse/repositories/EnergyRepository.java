@@ -11,41 +11,36 @@ import java.util.List;
 
 public class EnergyRepository {
 
+  private int sizeEnergyTable;
+
   public EnergyRepository() {}
+
+  //getters setters
+  public int getSizeEnergyTable() {return sizeEnergyTable;}
+  public void setSizeEnergyTable(int sizeEnergyTable) {this.sizeEnergyTable = sizeEnergyTable;}
 
   public List<EnergyData> getAllEnergyData() {
 
     Connect connect = new Connect();
-    List<EnergyData> energyTable = new ArrayList<>();
+    Queries queries = new Queries();
+    List<EnergyData> energyData;
 
-    try {
-      Connection connection = connect.loadConnection();
-      Statement statement = connection.createStatement();
-      ResultSet resultset = statement.executeQuery(Queries.ALL_ENERGY_DATA);
+    Connection connection = connect.loadConnection();
 
-      while (resultset.next()) {
-        int id = resultset.getInt("id");
-        float price = resultset.getFloat("price");
-        Timestamp timestamp = resultset.getTimestamp("timestamp");
-        energyTable.add(new EnergyData(id, price, timestamp));
-      }
+    energyData = queries.getEnergyTable(connection);
+    setSizeEnergyTable(energyData.size());
 
-      return energyTable;
-
-    } catch (SQLException sqlException) {
-      sqlException.printStackTrace();
-      return null;
-    }
+    return energyData;
   }
 
   public boolean addEnergyData(EnergyData energyData) {
 
     int rowchanged = 0;
     Connect connect = new Connect();
-
+    Connection connection = connect.loadConnection();
     try {
-      Connection connection = connect.loadConnection();
-      PreparedStatement statement = connection.prepareStatement(Queries.ADD_ENERGY_DATA);
+      PreparedStatement statement = connection.prepareStatement(
+              "INSERT INTO energy_data (price, timestamp) VALUES (?, NOW())");
       statement.setFloat(1, energyData.getPrice());
       rowchanged = statement.executeUpdate();
       if (rowchanged == 1) return true;
@@ -56,7 +51,7 @@ public class EnergyRepository {
     return false;
   }
 
-  public EnergyData getEnergyData() {
+  public EnergyData getEnergyInstance() {
     return new EnergyData();
   }
 

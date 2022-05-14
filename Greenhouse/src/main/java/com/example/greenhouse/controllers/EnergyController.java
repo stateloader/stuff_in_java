@@ -14,17 +14,18 @@ public class EnergyController {
 
   @GetMapping("/energy")
   public String showEnergyTable(Model model) {
-    // "modellerar" in attribut till energy.html för "viewing". Se EnergyRepository.
 
-    // "energyTable", all data från tabellen "energy_data".
-    // "energyData", instans av EnergyData, fylls i och läggs in i tabellen "energy_data".
-    // "energyAverage, medelvärdet av samtliga energipriser.
+    // Fetches all energy-data and its average into the ("thymeleafed") energy.html-file togheter with
+    // an EnergyData-instance (used for input and SQL insertion). Attribute "lastEnergyIndex" used for
+    // showing latest entry in energyTable.
 
     model.addAttribute("energyTable", energyRepository.getAllEnergyData());
-    model.addAttribute("energyData", energyRepository.getEnergyData());
+    model.addAttribute("energyData", energyRepository.getEnergyInstance());
+    model.addAttribute("lastEnergyIndex", energyRepository.getSizeEnergyTable());
     model.addAttribute("energyAverage", energyRepository.getAveragePrice());
     return "energy";
   }
+
   @PostMapping("/energy/update")
   public String updateEnergyTable(@ModelAttribute EnergyData energyData) {
     energyRepository.addEnergyData(energyData);
