@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Greenhouse Sectors</title>
+  <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:switch="${sectors}">
+  <h2 th:case="null">Apperently there's no sectors at all in my greenbhouse :/</h2>
+  <div th:case="*">
+    <h2>SECTORS</h2>
+    <table>
+
+      <thead><tr><th>Sector</tr>Sector Sensors</thead>
+      <tbody><tr th:each="sector : ${sectors}">
+        <td th:text="${sector.name}"></td>
+      </tbody>
+    </table>
+  </div>
+  <p><a href="/">Index</a></p>
+</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.example.greenhouse.repositories;
 import com.example.greenhouse.models.Sector;
+import com.example.greenhouse.models.modelutils.SensorData;
 import com.example.greenhouse.repositories.repoutils.Connect;
 import com.example.greenhouse.repositories.repoutils.Queries;
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Greenhouse Sectors</title>
+  <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:switch="${sensors}">
+  <h2 th:case="null">No data!</h2>
+  <div th:case="*">
+    <h2>GREENHOUSE</h2>
+    <table>
+      <thead><tr><th>Temperature</th><th>Sector Name</th><th>Sensor Status</th></tr></thead>
+      <tbody>
+      <tr th:each="data : ${sensors}">
+        <td th:text="${data.data}">grader</td>
+        <td th:text="${data.sectorID}"></td>
+        <td th:text="${data.timestamp}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><a href="/energy">Energy</a></p>
+</div>
+</body>
+</html>
