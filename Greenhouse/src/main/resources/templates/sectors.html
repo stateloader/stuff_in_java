@@ -12,9 +12,11 @@
     <h2>SECTORS</h2>
     <table>
 
-      <thead><tr><th>Sector</tr>Sector Sensors</thead>
+      <thead><tr><th>Sector</th><th>Temperature Sensor</tr>Humidity Sensor</tr></thead>
       <tbody><tr th:each="sector : ${sectors}">
         <td th:text="${sector.name}"></td>
+        <td><a th:href="@{/sectors/sector/temperature/{id}(id=${sector.id})}">Temperature</a></td>
+        <td><a th:href="@{/sectors/sector/humidity/{id}(id=${sector.id})}">Humidity</a></td>
       </tbody>
     </table>
   </div>

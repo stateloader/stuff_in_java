@@ -33,14 +33,4 @@ public class SectorRepository {
       return null;
     }
   }
-  public Sector getSector(int sectorID) {
-
-    List<Sector> sectors = getAllSectorData();
-
-    for (int i = 0; i < sectors.size(); i++) {
-      if (sectors.get(i).getId() == sectorID)
-        return sectors.get(i);
-    }
-    return null;
-  }
 }

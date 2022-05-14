@@ -4,15 +4,36 @@ import org.springframework.ui.Model;
 import com.example.greenhouse.repositories.SensorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class SensorController {
 
   private static SensorRepository sensorRepository = new SensorRepository();
 
-  @GetMapping("/sensors")
-  public String showSensors(Model model) {
-    model.addAttribute("sensors", sensorRepository.getAllSensorData(2));
-    return "sensors";
+  @GetMapping("/sectors/sector/temperature/{id}")
+  public String showSectorTemperature(@PathVariable("id") int sectorID, Model model) {
+
+    model.addAttribute("sector", sensorRepository.getSectorName(sectorID));
+    model.addAttribute("sensors", sensorRepository.getTemperatureReadingBySector(sectorID));
+    model.addAttribute("lastTemperatureIndex", sensorRepository.getTableLength());
+    model.addAttribute("temperatureAverage", sensorRepository.getAverageTemperature(sectorID));
+
+    return "temperature";
+  }
+
+  @GetMapping("/sectors/sector/humidity/{id}")
+  public String showSectorHumidity(@PathVariable("id") int sectorID, Model model) {
+
+    model.addAttribute("sector", sensorRepository.getSectorName(sectorID));
+    model.addAttribute("sensors", sensorRepository.getHumidityReadingBySector(sectorID));
+    model.addAttribute("lastHumidityIndex", sensorRepository.getTableLength());
+    model.addAttribute("humidityAverage", sensorRepository.getAverageHumidity(sectorID));
+    return "humidity";
+  }
+
+  @GetMapping("/test")
+  public String showDashboard(@PathVariable("id") int sectorID, Model model) {
+    return "test";
   }
 }

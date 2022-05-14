@@ -9,19 +9,24 @@
 <div th:switch="${sensors}">
   <h2 th:case="null">No data!</h2>
   <div th:case="*">
-    <h2>GREENHOUSE</h2>
+    <h2>TEMPERATURE READINGS, <td th:text="${sector}"></td></h2>
     <table>
-      <thead><tr><th>Temperature</th><th>Sector Name</th><th>Sensor Status</th></tr></thead>
+      <thead><tr><th>Reading</th><th>Time</th></tr></thead>
       <tbody>
       <tr th:each="data : ${sensors}">
         <td th:text="${data.data}">grader</td>
-        <td th:text="${data.sectorID}"></td>
         <td th:text="${data.timestamp}"></td>
       </tr>
       </tbody>
     </table>
   </div>
-  <p><a href="/energy">Energy</a></p>
+  <h2>LATEST TEMPERATURE READING: </h2>
+  <td th:text="${sensors.get(lastTemperatureIndex - 1).data}"></td>
+  <td th:text="${sensors.get(lastTemperatureIndex - 1).timestamp}"></td>
+
+  <h2>AVERAGE TEMPERATURE: </h2>
+  <td th:text="${temperatureAverage}"></td>
+  <p><a href="/sectors">Back to Sectors</a></p>
 </div>
 </body>
 </html>
