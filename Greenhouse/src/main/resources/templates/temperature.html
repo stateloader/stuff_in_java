@@ -6,10 +6,12 @@
   <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
 </head>
 <body>
+
+<h2>TEMPERATURE READINGS, <td th:text="${sector}"></td></h2>
+
 <div th:switch="${sensor}">
   <h2 th:case="null">No data!</h2>
   <div th:case="*">
-    <h2>TEMPERATURE READINGS, <td th:text="${sector}"></td></h2>
     <table>
       <thead><tr><th>Reading</th><th>Time</th></tr></thead>
       <tbody>
@@ -25,7 +27,7 @@
   <td th:text="${lastTemperatureData.timestamp}"></td>
   <h2>AVERAGE TEMPERATURE: </h2>
   <td th:text="${temperatureAverage}"></td>
-  <p><a href="/sectors">Back to Sectors</a></p>
+  <p><a href="/sectors"><button>Back to Sectors</button></a></p>
 </div>
 </body>
 </html>

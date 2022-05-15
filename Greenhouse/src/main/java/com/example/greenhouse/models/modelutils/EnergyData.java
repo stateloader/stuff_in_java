@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class EnergyData implements Serializable {
+//Klass för modellering av instanser från tabellen "energy".
 
   private int id;
   private float price;

@@ -3,11 +3,11 @@ package com.example.greenhouse.models;
 import java.io.Serializable;
 
 public class Sensor implements Serializable {
+//Klass för modellering av instanser från tabellen "sensor".
 
   private int id;
   private String type;
 
-  // constructors
   public Sensor() {}
 
   public Sensor(int id, String type) {

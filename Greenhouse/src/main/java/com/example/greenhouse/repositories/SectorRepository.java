@@ -5,6 +5,7 @@ import com.example.greenhouse.repositories.repoutils.Queries;
 
 import java.sql.*;
 import java.util.List;
+//Repository/DAO som hanterar query- och datahanteringslogik rörande DB:ns "sector"-tabell.
 
 public class SectorRepository {
 
@@ -12,11 +13,12 @@ public class SectorRepository {
 
   public List<Sector> getAllSectorData() {
 
-    // Queries all sectors and returns them in a list [see class Query].
-
+    // Klasserna Connect och Queries återfinns och förklaras i sub-paket "repoutils".
     Connect connect = new Connect();
     Queries queries = new Queries();
-    Connection connection = connect.loadConnection();
+
+    // Connection upprättas före en lista skapas av "sector"-tabellens samtliga instanser före retur.
+    Connection connection = connect.connectDatabase();
 
     return queries.getSectorTable(connection);
   }

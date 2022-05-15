@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class SensorData implements Serializable {
+//Klass för modellering av instanser från tabellen "sensor_data".
 
   private int id;
   private float data;

@@ -6,21 +6,24 @@
   <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:switch="${sectors}">
-  <h2 th:case="null">Apperently there's no sectors at all in my greenbhouse :/</h2>
-  <div th:case="*">
-    <h2>SECTORS</h2>
-    <table>
 
-      <thead><tr><th>Sector</th><th>Temperature Sensor</tr>Humidity Sensor</tr></thead>
+<h2>SECTORS</h2>
+
+<div th:switch="${sectors}">
+
+  <h2 th:case="null">No Sectors in Greenhouse for some reason.</h2>
+  <div th:case="*">
+
+    <table>
       <tbody><tr th:each="sector : ${sectors}">
         <td th:text="${sector.name}"></td>
-        <td><a th:href="@{/sectors/sector/temperature/{id}(id=${sector.id})}">Temperature</a></td>
-        <td><a th:href="@{/sectors/sector/humidity/{id}(id=${sector.id})}">Humidity</a></td>
+        <td><a th:href="@{/sectors/sector/temperature/{id}(id=${sector.id})}"><button>Temperature</button></a></td>
+        <td><a th:href="@{/sectors/sector/humidity/{id}(id=${sector.id})}"><button>Humidity</button></a></td>
       </tbody>
     </table>
+
   </div>
-  <p><a href="/">Index</a></p>
+  <p><a href="/"><button>Back to Index</button></a></p>
 </div>
 </body>
 </html>

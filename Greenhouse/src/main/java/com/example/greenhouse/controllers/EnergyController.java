@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class EnergyController {
+//Controller för energidata-viewing.
 
   private static EnergyRepository energyRepository = new EnergyRepository();
 
   @GetMapping("/energy")
   public String showEnergyTable(Model model) {
+    // Method inom vilken all data från SQL-tabellen "energy" läses in, data som lokalt sedan behandlas vidare för att
+    // avkasta de attribut som står listat nedan. Dessa matas sedan in i den "thymeleaf:ade" html-filen energy för view.
 
     energyRepository.getAllEnergyData();
 
@@ -21,17 +24,16 @@ public class EnergyController {
     model.addAttribute("energyData", new EnergyData());
     model.addAttribute("lastEnergyData", energyRepository.getLastEnergyData());
     model.addAttribute("averagePrice", energyRepository.getAveragePrice());
+
     return "energy";
   }
 
   @PostMapping("/energy/update")
   public String updateEnergyTable(@ModelAttribute EnergyData energyData) {
+    // Post-method kallad på under förfarandet med postandet av ett nytt (senaste) elpris.
+
     energyRepository.addEnergyData(energyData);
+
     return "redirect:/energy";
   }
 }
-
-
-// Fetches all energy-data and its average into the ("thymeleafed") energy.html-file togheter with
-// an EnergyData-instance (used for input and SQL insertion). Attribute "lastEnergyIndex" used for
-// showing latest entry in energyTable.

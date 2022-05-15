@@ -5,7 +5,9 @@ import java.util.Properties;
 import java.io.FileInputStream;
 
 public class Connect {
+//Klass inom vilken all SQL-connectivity sköts.
 
+  // "Get-property-strängar" från application.properties-filen (som ej pushats till GIT).
   private static final String STR_PROPERTY = "src/main/resources/application.properties";
   private static final String STR_CONNECT = "connectionString";
   private static final String STR_USERNAME = "spring.datasource.username";
@@ -13,7 +15,8 @@ public class Connect {
 
   public Connect() {}
 
-  public Connection loadConnection() {
+  public Connection connectDatabase() {
+    // Kontaktar (eller försöker - ingen felhantering på plats) databasen.
 
     Properties properties = new Properties();
     Connection connection;
