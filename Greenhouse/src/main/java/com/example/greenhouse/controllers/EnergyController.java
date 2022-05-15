@@ -15,14 +15,12 @@ public class EnergyController {
   @GetMapping("/energy")
   public String showEnergyTable(Model model) {
 
-    // Fetches all energy-data and its average into the ("thymeleafed") energy.html-file togheter with
-    // an EnergyData-instance (used for input and SQL insertion). Attribute "lastEnergyIndex" used for
-    // showing latest entry in energyTable.
+    energyRepository.getAllEnergyData();
 
-    model.addAttribute("energyTable", energyRepository.getAllEnergyData());
-    model.addAttribute("energyData", energyRepository.getEnergyInstance());
-    model.addAttribute("lastEnergyIndex", energyRepository.getSizeEnergyTable());
-    model.addAttribute("energyAverage", energyRepository.getAveragePrice());
+    model.addAttribute("energyTable", energyRepository.getEnergyTable());
+    model.addAttribute("energyData", new EnergyData());
+    model.addAttribute("lastEnergyData", energyRepository.getLastEnergyData());
+    model.addAttribute("averagePrice", energyRepository.getAveragePrice());
     return "energy";
   }
 
@@ -32,3 +30,8 @@ public class EnergyController {
     return "redirect:/energy";
   }
 }
+
+
+// Fetches all energy-data and its average into the ("thymeleafed") energy.html-file togheter with
+// an EnergyData-instance (used for input and SQL insertion). Attribute "lastEnergyIndex" used for
+// showing latest entry in energyTable.

@@ -18,9 +18,9 @@
             <th><h3>Average Price</h3></th>
         </tr>
         <tr>
-            <td th:text="${energyTable.get(lastEnergyIndex - 1).price} "></td>
-            <td th:text="${energyTable.get(lastEnergyIndex - 1).timestamp} "></td>
-            <td th:text="${energyAverage} "></td>
+            <td th:text="${lastEnergyData.price} "></td>
+            <td th:text="${lastEnergyData.timestamp} "></td>
+            <td th:text="${averagePrice} "></td>
         </tr>
         </thead>
     </table>

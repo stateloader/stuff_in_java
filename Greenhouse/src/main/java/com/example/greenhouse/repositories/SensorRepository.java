@@ -1,6 +1,7 @@
 package com.example.greenhouse.repositories;
 
 import com.example.greenhouse.models.modelutils.Calculator;
+import com.example.greenhouse.models.modelutils.EnergyData;
 import com.example.greenhouse.models.modelutils.SensorData;
 import com.example.greenhouse.repositories.repoutils.Connect;
 import com.example.greenhouse.repositories.repoutils.Queries;
@@ -14,15 +15,33 @@ public class SensorRepository {
   private int sizeTemperatureData;
   private int sizeHumidityData;
 
+  private List<SensorData> temperatureTable;
+  private List<SensorData> humidityTable;
+
+  private SensorData lastTemperatureData;
+  private SensorData lastHumidityData;
+
   public SensorRepository() {}
 
   // Getters, size of various lists storing various data. Used when fetching latest "reading" [see SensorController].
   public int getSizeTemperatureData() {return sizeTemperatureData;}
   public int getSizeHumidityData() {return sizeHumidityData;}
 
+  public List<SensorData> getTemperatureTable() {return temperatureTable;}
+  public List<SensorData> getHumidityTable() {return humidityTable;}
+
+  public SensorData getLastTemperatureData() {return lastTemperatureData;}
+  public SensorData getLastHumidityData() {return lastHumidityData;}
+
   // Setters, sets size of various lists storing various data.
   public void setSizeTemperatureData(int sizeTemperatureData) {this.sizeTemperatureData = sizeTemperatureData;}
   public void setSizeHumidityData(int sizeHumidityData) {this.sizeHumidityData = sizeHumidityData;}
+
+  public void setTemperatureTable(List<SensorData> temperatureTable) {this.temperatureTable = temperatureTable;}
+  public void setHumidityTable(List<SensorData> humidityTable) {this.humidityTable = humidityTable;}
+
+  public void setLastTemperatureData(SensorData lastTemperatureData) {this.lastTemperatureData = lastTemperatureData;}
+  public void setLastHumidityData(SensorData lastHumidityData) {this.lastHumidityData = lastHumidityData;}
 
   public List<SensorData> getTemperatureReadingBySector(int sectorID) {
 

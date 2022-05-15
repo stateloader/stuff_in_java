@@ -31,9 +31,4 @@ public class SensorController {
     model.addAttribute("humidityAverage", sensorRepository.getAverageHumidity(sectorID));
     return "humidity";
   }
-
-  @GetMapping("/dashboard")
-  public String showDashboard(@PathVariable("id") int sectorID, Model model) {
-    return "dashboard";
-  }
 }

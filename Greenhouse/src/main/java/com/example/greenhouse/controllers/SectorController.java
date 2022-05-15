@@ -10,13 +10,6 @@ public class SectorController {
 
   private static SectorRepository sectorRepository = new SectorRepository();
 
-  @GetMapping("/")
-
-  // Shows ("thymeleafed") index.html-file.
-  public String showIndex() {
-    return "index";
-  }
-
   @GetMapping("/sectors")
   public String showIndex(Model model) {
 

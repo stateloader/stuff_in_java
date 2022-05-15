@@ -12,25 +12,35 @@ import java.util.List;
 public class EnergyRepository {
 
   private int sizeEnergyTable;
+  private List<EnergyData> energyTable;
+  private EnergyData lastEnergyData;
+  private float averagePrice;
 
   public EnergyRepository() {}
 
-  //getters setters
+  // getters
   public int getSizeEnergyTable() {return sizeEnergyTable;}
-  public void setSizeEnergyTable(int sizeEnergyTable) {this.sizeEnergyTable = sizeEnergyTable;}
+  public List<EnergyData> getEnergyTable() {return energyTable;}
+  public EnergyData getLastEnergyData() {return lastEnergyData;}
+  public float getAveragePrice() {return averagePrice;}
 
-  public List<EnergyData> getAllEnergyData() {
+  // setters
+  public void setSizeEnergyTable(int sizeEnergyTable) {this.sizeEnergyTable = sizeEnergyTable;}
+  public void setEnergyTable(List<EnergyData> energyTable) {this.energyTable = energyTable;}
+  public void setLastEnergyData(EnergyData lastEnergyData) {this.lastEnergyData = lastEnergyData;}
+  public void setAveragePrice(float averagePrice) {this.averagePrice = averagePrice;}
+
+  public void getAllEnergyData() {
 
     Connect connect = new Connect();
     Queries queries = new Queries();
-    List<EnergyData> energyData;
 
     Connection connection = connect.loadConnection();
 
-    energyData = queries.getEnergyTable(connection);
-    setSizeEnergyTable(energyData.size());
-
-    return energyData;
+    setEnergyTable(queries.getEnergyTable(connection));
+    setSizeEnergyTable(getEnergyTable().size());
+    setLastEnergyData(getEnergyTable().get(getSizeEnergyTable() - 1));
+    setAveragePrice(calculateAveragePrice());
   }
 
   public boolean addEnergyData(EnergyData energyData) {
@@ -41,6 +51,7 @@ public class EnergyRepository {
     try {
       PreparedStatement statement = connection.prepareStatement(
               "INSERT INTO energy_data (price, timestamp) VALUES (?, NOW())");
+
       statement.setFloat(1, energyData.getPrice());
       rowchanged = statement.executeUpdate();
       if (rowchanged == 1) return true;
@@ -51,19 +62,15 @@ public class EnergyRepository {
     return false;
   }
 
-  public EnergyData getEnergyInstance() {
-    return new EnergyData();
-  }
-
-  public float getAveragePrice() {
+  private float calculateAveragePrice() {
 
     Calculator calculator = new Calculator();
     List<Float> prices = new ArrayList<>();
-    List<EnergyData> energyTable = getAllEnergyData();
 
-    for (EnergyData data : energyTable)
+    for (EnergyData data : getEnergyTable())
       prices.add(data.getPrice());
 
     return calculator.calculateAverage(prices);
   }
+
 }
