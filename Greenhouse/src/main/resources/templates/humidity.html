@@ -7,20 +7,22 @@
 </head>
 <body>
 
-<div th:switch="${sensors}">
+<div th:switch="${sensor}">
     <h2 th:case="null">No data!</h2>
     <div th:case="*">
         <h2>HUMIDITY READINGS, <td th:text="${sector}"></td></h2>
         <table>
             <thead><tr><th>Reading</th><th>Time</th></tr></thead>
             <tbody>
-            <tr th:each="data : ${sensors}">
+            <tr th:each="data : ${sensor}">
                 <td th:text="${data.data}">grader</td>
                 <td th:text="${data.timestamp}"></td>
             </tr>
             </tbody>
         </table>
     </div>
+    <td th:text="${lastHumidityIndex.data}"></td>
+    <td th:text="${lastHumidityIndex.timestamp}"></td>
     <td th:text="${humidityAverage}"></td>
     <p><a href="/sectors">Back to Sectors</a></p>
 </div>

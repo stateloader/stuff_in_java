@@ -72,5 +72,4 @@ public class EnergyRepository {
 
     return calculator.calculateAverage(prices);
   }
-
 }

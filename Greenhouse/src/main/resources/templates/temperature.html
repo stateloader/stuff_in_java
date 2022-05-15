@@ -6,24 +6,23 @@
   <link href="../static/makeup.css" th:href="@{/makeup.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:switch="${sensors}">
+<div th:switch="${sensor}">
   <h2 th:case="null">No data!</h2>
   <div th:case="*">
     <h2>TEMPERATURE READINGS, <td th:text="${sector}"></td></h2>
     <table>
       <thead><tr><th>Reading</th><th>Time</th></tr></thead>
       <tbody>
-      <tr th:each="data : ${sensors}">
-        <td th:text="${data.data}">grader</td>
+      <tr th:each="data : ${sensor}">
+        <td th:text="${data.data}"></td>
         <td th:text="${data.timestamp}"></td>
       </tr>
       </tbody>
     </table>
   </div>
   <h2>LATEST TEMPERATURE READING: </h2>
-  <td th:text="${sensors.get(lastTemperatureIndex - 1).data}"></td>
-  <td th:text="${sensors.get(lastTemperatureIndex - 1).timestamp}"></td>
-
+  <td th:text="${lastTemperatureData.data}"></td>
+  <td th:text="${lastTemperatureData.timestamp}"></td>
   <h2>AVERAGE TEMPERATURE: </h2>
   <td th:text="${temperatureAverage}"></td>
   <p><a href="/sectors">Back to Sectors</a></p>

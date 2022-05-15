@@ -14,10 +14,12 @@ public class SensorController {
   @GetMapping("/sectors/sector/temperature/{id}")
   public String showSectorTemperature(@PathVariable("id") int sectorID, Model model) {
 
+    sensorRepository.fetchTemperatureReadingBySector(sectorID);
+
     model.addAttribute("sector", sensorRepository.getSectorName(sectorID));
-    model.addAttribute("sensors", sensorRepository.getTemperatureReadingBySector(sectorID));
-    model.addAttribute("lastTemperatureIndex", sensorRepository.getSizeTemperatureData());
-    model.addAttribute("temperatureAverage", sensorRepository.getAverageTemperature(sectorID));
+    model.addAttribute("sensor", sensorRepository.getTemperatureTable());
+    model.addAttribute("lastTemperatureData", sensorRepository.getLastTemperatureData());
+    model.addAttribute("temperatureAverage", sensorRepository.getAverageTemperature());
 
     return "temperature";
   }
@@ -25,10 +27,12 @@ public class SensorController {
   @GetMapping("/sectors/sector/humidity/{id}")
   public String showSectorHumidity(@PathVariable("id") int sectorID, Model model) {
 
+    sensorRepository.fetchHumidityReadingBySector(sectorID);
+
     model.addAttribute("sector", sensorRepository.getSectorName(sectorID));
-    model.addAttribute("sensors", sensorRepository.getHumidityReadingBySector(sectorID));
-    model.addAttribute("lastHumidityIndex", sensorRepository.getSizeHumidityData());
-    model.addAttribute("humidityAverage", sensorRepository.getAverageHumidity(sectorID));
+    model.addAttribute("sensor", sensorRepository.getHumidityTable());
+    model.addAttribute("lastHumidityIndex", sensorRepository.getLastHumidityData());
+    model.addAttribute("humidityAverage", sensorRepository.getAverageHumidity());
     return "humidity";
   }
 }
