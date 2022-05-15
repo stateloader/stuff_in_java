@@ -52,8 +52,8 @@ public class EnergyRepository {
 
   public boolean addEnergyData(EnergyData energyData) {
     // Applikationens enda "add". Hade helst velat haft lejonparten av all logik i denna method (precis som övriga
-    // queries) i "Query"-klassen men IntelliJ/Java slog ifrån mina olika försök. I nuläget heller Ingen felhantering
-    // på plats som möter upp methodens bool-return (Likt din Response-klass).
+    // queries) i "Query"-klassen men IntelliJ/Java slog ifrån mina olika försök. I nuläget Ingen felhantering på plats
+    // som möter upp eventuellt knas medelst methodens bool-return (Likt din Response-klass).
 
     int rowchanged = 0;
     Connect connect = new Connect();
@@ -71,7 +71,7 @@ public class EnergyRepository {
   }
 
   private float calculateAveragePrice() {
-    // Logik för medelvärdesberäkning av värdena "energy_data"-tabellens pris-kolumn.
+    // Logik för medelvärdesberäkning av värdena i "energy_data"-tabellens pris-kolumn.
 
     Calculator calculator = new Calculator();
     List<Float> prices = new ArrayList<>();

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class indexController {
-//Största omvägen världen skådat för att fånga de senaste värdena temp/humid från varje sektor plus energy.
+//Visar senaste värdena från sektorer och energimätaren.
 
   @GetMapping("/")
   // Läser in "thymeleaf:ade" html-filen index.html tillsammans med model-attributen.
