@@ -7,10 +7,11 @@
 </head>
 <body>
 
-<h2>TEMPERATURE READINGS, <td th:text="${sector}"></td></h2>
+<h3>GREENHOUSE | TEMPERATURE READINGS | <td th:text="${sector}"></td></h3>
 
 <div th:switch="${sensor}">
   <h2 th:case="null">No data!</h2>
+
   <div th:case="*">
     <table>
       <thead><tr><th>Reading</th><th>Time</th></tr></thead>
@@ -22,12 +23,11 @@
       </tbody>
     </table>
   </div>
-  <h2>LATEST TEMPERATURE READING: </h2>
-  <td th:text="${lastTemperatureData.data}"></td>
-  <td th:text="${lastTemperatureData.timestamp}"></td>
-  <h2>AVERAGE TEMPERATURE: </h2>
-  <td th:text="${temperatureAverage}"></td>
+
+  <h4>LATEST READING |<td th:text="${lastTemperatureData.data}"></td>°C</h4>
+  <h4>PERIOD AVERAGE |<td th:text="${temperatureAverage}"></td>°C</h4>
   <p><a href="/sectors"><button>Back to Sectors</button></a></p>
+
 </div>
 </body>
 </html>

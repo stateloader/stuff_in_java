@@ -15,15 +15,16 @@ public class EnergyController {
 
   @GetMapping("/energy")
   public String showEnergyTable(Model model) {
-    // Method inom vilken all data från SQL-tabellen "energy" läses in, data som lokalt sedan behandlas vidare för att
-    // avkasta de attribut som står listat nedan. Dessa matas sedan in i den "thymeleaf:ade" html-filen energy för view.
+    // Method inom vilken all data från SQL-tabellen "energy_data" läses in, data som lokalt sedan behandlas vidare för
+    // att avkasta de attribut som står listat nedan. Dessa matas sedan in i den "thymeleaf:ade" html-filen energy för
+    // view.
 
     energyRepository.getAllEnergyData();
 
     model.addAttribute("energyTable", energyRepository.getEnergyTable());
     model.addAttribute("energyData", new EnergyData());
     model.addAttribute("lastEnergyData", energyRepository.getLastEnergyData());
-    model.addAttribute("averagePrice", energyRepository.getAveragePrice());
+    model.addAttribute("priceAverage", energyRepository.getAveragePrice());
 
     return "energy";
   }

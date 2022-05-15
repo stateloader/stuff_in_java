@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h2>HUMIDITY READINGS, <td th:text="${sector}"></td></h2>
+<h3>GREENHOUSE | HUMIDITY READINGS <td th:text="${sector}"></td></h3>
 
 <div th:switch="${sensor}">
     <h2 th:case="null">No data!</h2>
@@ -22,11 +22,8 @@
             </tbody>
         </table>
     </div>
-    <h4>LATEST HUMIDITY READING</h4>
-    <td th:text="${lastHumidityData.data}"></td>
-    <td th:text="${lastHumidityData.timestamp}"></td>
-    <h2>AVERAGE TEMPERATURE: </h2>
-    <td th:text="${humidityAverage}"></td>
+    <h4>LATEST READING |<td th:text="${lastHumidityData.data}"></td>%</h4>
+    <h4>PERIOD AVERAGE |<td th:text="${humidityAverage}"></td>%</h4>
     <p><a href="/sectors"><button>Back to Sectors</button></a></p>
 </div>
 </body>

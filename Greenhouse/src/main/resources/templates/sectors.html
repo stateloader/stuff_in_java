@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>Greenhouse Sectors</title>
@@ -7,7 +8,7 @@
 </head>
 <body>
 
-<h2>SECTORS</h2>
+<h3>GREENHOUSE | SECTORS</h3>
 
 <div th:switch="${sectors}">
 
@@ -16,7 +17,7 @@
 
     <table>
       <tbody><tr th:each="sector : ${sectors}">
-        <td th:text="${sector.name}"></td>
+        <td th:class="sub_header" th:text="${sector.name.toUpperCase()}   "></td>
         <td><a th:href="@{/sectors/sector/temperature/{id}(id=${sector.id})}"><button>Temperature</button></a></td>
         <td><a th:href="@{/sectors/sector/humidity/{id}(id=${sector.id})}"><button>Humidity</button></a></td>
       </tbody>
@@ -25,5 +26,6 @@
   </div>
   <p><a href="/"><button>Back to Index</button></a></p>
 </div>
+
 </body>
 </html>

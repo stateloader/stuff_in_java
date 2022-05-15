@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnergyRepository {
-//Repository/DAO som hanterar query- och datahanteringslogik rörande DB:ns "energy"-tabell.
+//Repository/DAO som hanterar query- och datahanteringslogik rörande DB:ns "energy_data"-tabell.
 
   // query-sträng förklarad i add-methoden längre ned.
   private static final String ADD_ENERGY_DATA = "INSERT INTO energy_data (price, timestamp) VALUES (?, NOW())";
@@ -71,7 +71,7 @@ public class EnergyRepository {
   }
 
   private float calculateAveragePrice() {
-    // Logik för medelvärdesberäkning av värdena "energy"-tabellens pris-kolumn.
+    // Logik för medelvärdesberäkning av värdena "energy_data"-tabellens pris-kolumn.
 
     Calculator calculator = new Calculator();
     List<Float> prices = new ArrayList<>();

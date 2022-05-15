@@ -26,8 +26,6 @@ public class Queries {
   // Förfrågan om all data från tabellen sensor_data som har en FK pekandes mot en HUMIDITY-sensor (1) och
   // sektor ? (i detta fall ett värde som sätts av användarens knappklick - se temperature.html).
 
-  private static final String ALL_SENSOR_DATA = "SELECT * FROM sensor_data";
-
   public Queries() {}
 
   public List<SensorData> getTemperatureBySector(Connection connection, int sectorID) {

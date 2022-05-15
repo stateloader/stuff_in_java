@@ -7,11 +7,22 @@
 </head>
 <body>
 
-<h2>GREENHOUSE!</h2>
+<h3>GREENHOUSE |</h3>
 
 <div>
   <p><a href="/sectors"><button>Sectors</button></a></p>
-  <p><a href="/energy"><button>Power</button></a></p>
+  <p><a href="/energy"><button>Energy</button></a></p>
+
+  <h4>DASHBOARD LATEST READINGS</h4>
+
+  <h4>ENERGY U | PRICE........<td th:text="${energy_last.price}"></td> SEK KW/H</h4>
+  <h4>SECTOR A | TEMPERATURE..<td th:text="${sensor1temp.data}"></td> °C</h4>
+  <h4>SECTOR A | HUMIDITY.....<td th:text="${sensor1humd.data}"></td> %</h4>
+  <h4>SECTOR B | TEMPERATURE..<td th:text="${sensor2temp.data}"></td> °C</h4>
+  <h4>SECTOR B | HUMIDITY.....<td th:text="${sensor2humd.data}"></td> %</h4>
+  <h4>SECTOR C | TEMPERATURE..<td th:text="${sensor3temp.data}"></td> °C</h4>
+  <h4>SECTOR C | HUMIDITY.....<td th:text="${sensor3humd.data}"></td> %</h4>
+
   </div>
 </body>
 </html>

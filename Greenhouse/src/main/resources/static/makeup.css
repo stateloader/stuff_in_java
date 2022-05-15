@@ -4,16 +4,7 @@ body{
     background: #f5f5f5;
     font-family: "Courier New", monospace;
 }
-.page_header{
-    text-align: left;
-    font-size: xx-large;
-    font-weight: bold;
-}
-
 .sub_header{
-    text-align: center;
+    font-family: "Courier New", monospace;
     font-size: large;
-}
-.meta_block{
-    alignment: right;
 }
